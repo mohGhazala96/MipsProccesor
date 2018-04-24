@@ -107,7 +107,7 @@ initial
 		instructionMemory[59] = 8'b00000000;
 
 		//slt 
-		instructionMemory[60] = 8'b000000_10;
+		instructionMemory[60] = 8'b00000000;
 		instructionMemory[61] = 8'b00000000;  
 		instructionMemory[62] = 8'b00000000;
 		instructionMemory[63] = 8'b00000000;
