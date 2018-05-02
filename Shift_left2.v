@@ -1,6 +1,6 @@
 module Shift_left2(out , in);
- input [5:0] in;
- output reg [7:0] out;
+ input [31:0] in;
+ output reg [31:0] out;
 
  always @ (in)
 
@@ -10,12 +10,12 @@ endmodule
 
 module Shift_test;
 
-    reg [5:0] in;
-    wire [7:0] out;
+    reg [31:0] in;
+    wire [31:0] out;
     Shift_left2 test (out,in);
 
     initial begin
-      in =6'b111111;
+      in =32'b111111;
     end
 
     always @(out)
