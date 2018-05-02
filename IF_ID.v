@@ -16,6 +16,7 @@ endmodule
  
 module Test_IF_ID;
     reg [7:0] PCIn;
+    reg [31:0] IntructionIn;
     reg clock ;
     wire [31:0] InstructionOut;
     wire [7:0] PCOut;
@@ -23,7 +24,6 @@ module Test_IF_ID;
       begin
         PCIn=7'b100000;
         clock = 0;
-
         forever
           begin
             #10 clock = ~clock;
@@ -34,12 +34,11 @@ module Test_IF_ID;
         #200 $finish;
     end
    
-    IF_ID IF_ID_Reg(InstructionOut, PCOut, PCIn, clock);
+  IF_ID IF_ID_Reg(InstructionOut, PCOut,IntructionIn,PCIn, clock);
 
     always@(posedge clock) begin
         PCIn  += 4;
         $display("pc is %d", PCOut);
-        $display("ins is %d", InstructionOut);
     end
 
 endmodule
