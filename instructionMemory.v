@@ -1,6 +1,6 @@
 module InstructionMemory(instructionOut,clock,instructionAdress);
 input clock;
-input [7:0] instructionAdress;
+input [31:0] instructionAdress;
 output reg [31:0] instructionOut;
 reg[7:0] instructionMemory[511:0];
 
