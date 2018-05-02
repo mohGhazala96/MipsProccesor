@@ -1,10 +1,10 @@
 module IF_ID(InstructionOut,PCOut,InstructionIn,PCIn,clock);
   input   [31:0] InstructionIn;
-  input [7:0] PCIn;
+  input [31:0] PCIn;
   input clock ;
   wire pcOutIncremendted;
   output reg [31:0] InstructionOut;
-  output reg [7:0] PCOut;
+  output reg [31:0] PCOut;
 
   assign pcOutIncremendted= PCIn+4; // address coming out from the pc added with 4
   always@(posedge clock)
@@ -15,14 +15,14 @@ module IF_ID(InstructionOut,PCOut,InstructionIn,PCIn,clock);
 endmodule
  
 module Test_IF_ID;
-    reg [7:0] PCIn;
+  reg [31:0] PCIn;
     reg [31:0] IntructionIn;
     reg clock ;
     wire [31:0] InstructionOut;
-    wire [7:0] PCOut;
+  wire [31:0] PCOut;
     initial
       begin
-        PCIn=7'b100000;
+        PCIn=32'b00000000000000000000000000000001;
         clock = 0;
         forever
           begin
