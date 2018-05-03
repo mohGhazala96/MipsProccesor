@@ -6,10 +6,10 @@ wire [2:0] memoryInoryOut,EXMEMM_output;
 wire [3:0] ALUControlout;
 wire [4:0] IDEXregisterDestinationOut,IDEXregisterTargetOut,EXMEMwriteRegister_output,MUXwriteRegister,
     MEMWBwriteRegister_output;
-wire [7:0] addressToInstructionMemory,pcOut,IDEXPCOut,EXMEMPC_output,iAddress;
 wire [31:0] instMemoryInstructionOut,ifidInstructionOut,read_data_1,read_data_2,extendedInstruction,
     IDEXregister1Out,IDEXregister2Out,IDEXoffestOut,EXMEMALUresult_output,EXMEMwriteData_output,
-    ALUresult,ALUin2, DataMemoryReadData,MEMWBreadData_output,MEMWBALUResult_output,write_data,shiftLeftOut;
+    ALUresult,ALUin2, DataMemoryReadData,MEMWBreadData_output,MEMWBALUResult_output,write_data,shiftLeftOut,
+    addressToInstructionMemory,iAddress,pcOut,IDEXPCOut,EXMEMPC_output;
 reg clk;
 
 
