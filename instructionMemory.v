@@ -1,6 +1,6 @@
-module InstructionMemory(instructionOut,clock,instructionAdress);
-input clock;
-input [31:0] instructionAdress;
+module InstructionMemory(instructionOut,instructionAddress);
+// input clock;
+input [31:0] instructionAddress;
 output reg [31:0] instructionOut;
 reg[7:0] instructionMemory[511:0];
 
@@ -113,11 +113,36 @@ initial
 	// 	instructionMemory[63] = 8'b00000000;
 	end
 
-always@(posedge clock)
+always@(instructionAddress)
 	begin
-		instructionOut = {instructionMemory[instructionAdress],
-						instructionMemory[instructionAdress + 1],
-						instructionMemory[instructionAdress + 2], 
-						instructionMemory[instructionAdress + 3]};
+		$display("instructionAddress: %b", instructionAddress);
+		instructionOut = {instructionMemory[instructionAddress],
+						instructionMemory[instructionAddress + 1],
+						instructionMemory[instructionAddress + 2], 
+						instructionMemory[instructionAddress + 3]};
 	end
 endmodule
+
+// module InstructionMemory_tb;
+// reg [31:0] instructionAddressIn;
+// wire [31:0] instruction;
+
+// InstructionMemory instMemory(instruction, instructionAddressIn);
+
+
+// initial
+// 	begin
+// 		#5 instructionAddressIn <= 32'b00000000_00000000_00000000_00000000;
+// 		#10 instructionAddressIn <= 32'b00000000_00000000_00000000_00000100;
+		
+// 		# 100000 $finish;
+// 	end
+
+// 	always@(instructionAddressIn) begin
+// 		$display("%t PC In is %b", $time, instructionAddressIn);
+// 	end
+// 	always@(instruction) begin
+// 		$display("%t Instruction Out is %b", $time, instruction);
+// 	end
+
+// endmodule
