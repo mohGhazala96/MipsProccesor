@@ -8,13 +8,13 @@ reg [7:0] memoryCell [1000:0];
 
 output reg [31:0] readData;
 
-always @(*)
-begin
-	$display("test------------");
-	$display("memRead: %b", memRead);
-  $display("memWrite: %b", memWrite);
-	$display("address: %b", address);
-end
+// always @(*)
+// begin
+// 	$display("test------------");
+// 	$display("memRead: %b", memRead);
+//   $display("memWrite: %b", memWrite);
+// 	$display("address: %b", address);
+// end
 
 always @ (posedge clk)
 begin
@@ -28,8 +28,6 @@ begin
        memoryCell[address+1] = writeData[23:16];
        memoryCell [address+2] = writeData[15:8];
        memoryCell [address+3] = writeData [7:0];
-
-     $display("Write data %b", writeData);
   end
 end
 endmodule

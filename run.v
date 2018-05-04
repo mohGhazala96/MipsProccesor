@@ -19,6 +19,7 @@ initial
         iAddressReg = 0;
         clk=0;
         forever begin
+            $display("read_data_2: %b", read_data_2);
             #10 clk= ~clk;
         end
     end
