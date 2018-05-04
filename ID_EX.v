@@ -1,8 +1,26 @@
-module ID_EX(clock,writeBackIn,memoryIn,EX,pcIN,register1In,register2In,offestIn,
-    registerTargetIn,registerDestinationIn
-    , writeBackOut,memoryInoryOut, ALUop,ALUSrc,
-    pcOut,register1Out,register2Out,offestOut,
-    registerDestinationOut,registerTargetOut,RegDst);
+module ID_EX(
+    clock,
+    writeBackIn,
+    memoryIn,
+    EX,
+    pcIN,
+    register1In,
+    register2In,
+    offestIn,
+    registerTargetIn,
+    registerDestinationIn,
+    writeBackOut,
+    memoryInoryOut,
+    ALUop,
+    ALUSrc,
+    pcOut,
+    register1Out,
+    register2Out,
+    offestOut,
+    registerDestinationOut,
+    registerTargetOut,
+    RegDst
+);
 
 // EX is used as  ALUSrc,RegDst and ALUop
 input clock ;
@@ -24,8 +42,8 @@ output reg ALUSrc, RegDst;
 
 always@(posedge clock)
     begin
-        writeBackOut<= writeBackIn;
-        memoryInoryOut<= memoryIn;
+        writeBackOut <= writeBackIn;
+        memoryInoryOut <= memoryIn;
         ALUSrc<= EX[0];
         ALUop<= {EX[2],EX[1]};
         RegDst<= EX[3];

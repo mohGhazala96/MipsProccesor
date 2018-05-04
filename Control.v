@@ -5,6 +5,7 @@ module Control(RegDst, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWr
 
     always@(Instruction)
         begin
+            $display("Instruction: %b", Instruction);
             RegDst = 0;
             Branch = 0;
             MemRead = 0;
