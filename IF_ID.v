@@ -13,7 +13,7 @@ module IF_ID(InstructionOut,PCOut,InstructionIn,PCIn,clock);
         InstructionOut = InstructionIn ;
       end
 endmodule
- 
+
 module Test_IF_ID;
   reg [31:0] PCIn;
     reg [31:0] IntructionIn;
@@ -33,11 +33,11 @@ module Test_IF_ID;
     begin
         #200 $finish;
     end
-   
+
   IF_ID IF_ID_Reg(InstructionOut, PCOut,IntructionIn,PCIn, clock);
 
     always@(posedge clock) begin
-        PCIn  += 4;
+        PCIn = PCIn + 4;
         $display("pc is %d", PCOut);
     end
 

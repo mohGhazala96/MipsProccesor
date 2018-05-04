@@ -64,7 +64,7 @@ module TestALU;
         func = 6'b000000;
         in1 = 2'b11;
         in2 = 2'b11;
-        shamt = 5'b00010;
+        shamt = 5'b00001;
     end
 
     always@(res) begin
