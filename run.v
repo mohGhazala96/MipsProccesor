@@ -25,7 +25,6 @@ initial
             // $display("%t EXMEMM_output %b",$time,EXMEMM_output);
             #10 clk= ~clk;
 
-            $display("%t PCSrc %b",$time,pcsrc);
 
         end
     end
@@ -122,6 +121,7 @@ assign write_data = MEMWBMemToReg == 0 ? MEMWBreadData_output : MEMWBALUResult_o
 
 always@(posedge clk)
 begin
+    $display("%t PCSrc %b",$time,pcsrc);
     // $display("%t clk is %d",$time, clk);
     // $display("OUR DATA33333: %b", {MEMWBMemToReg, MEMWBreadData_output, EXMEMALUresult_output});
 end

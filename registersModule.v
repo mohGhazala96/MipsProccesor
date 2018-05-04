@@ -22,10 +22,12 @@ module registersModule(clk, read_reg_1, read_reg_2, write_reg, write_data, regWr
 			// $display("read_reg_1: %b", read_reg_1);
 			// $display("read_reg_2: %b", read_reg_2);
 			// $display("read_data_2: %b", read_data_2);
-			$display("-------------Registers:---------");
+			$display("\t-------------Registers:---------");
 			for (j=0;j<32;j++)begin
 			$display("%t Register[%0d] : %b",$time, j,registers[j]);
 			end
+			$display("\t------------End Registers----------------------------");
+
 			// $display("regWrite: %b", regWrite);
 			// $display("write_reg: ", write_reg);
 
