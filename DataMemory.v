@@ -4,7 +4,7 @@ input [31:0] writeData;
 input memRead,memWrite;
 input [31:0] address;
 input clk;
-reg [7:0] memoryCell [100:0];
+reg [7:0] memoryCell [1000:0];
 
 output reg [31:0] readData;
 
@@ -51,16 +51,13 @@ end
  begin  
  fork
  		$monitor("%t %b", $time,readData);
- 		#3 writeData <= 32'b00000111011111111101111111110000;
+ 		#4 writeData <= 32'b00000111011111111101111111110000;
  		# 5 memWrite <= 1'b1;   
  		# 5 memRead <=1'b0;
- 		#5 address <= 2'b 01;
- 		# 10 address<= 2'b00;
- 		# 30 memWrite <=1'b0 ;
- 		#30 memRead<=1'b1; 
- 		# 35 address <=  2'b01 ;
- 		# 40 address <=  2'b00 ;
- 	    # 50 $finish; 
+ 		#5 address <= 32'b00000000000000000000000000000000;
+ 		#15 memWrite <=1'b0 ;
+ 		#15 memRead<=1'b1; 
+ 	    #25 $finish; 
  		
 join
  end
