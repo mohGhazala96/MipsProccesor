@@ -19,12 +19,18 @@ initial
         iAddressReg = 0;
         clk=0;
         forever begin
-            $display("read_data_2: %b", read_data_2);
+            // $display("%t read_data_2 %b",$time,read_data_2);                
+            // $display("%t IDEXregister2Out %b",$time,IDEXregister2Out);        
+            // $display("%t EXMEMwriteData_output %b",$time,EXMEMwriteData_output);
+            // $display("%t EXMEMM_output %b",$time,EXMEMM_output);
             #10 clk= ~clk;
+
+            $display("%t PCSrc %b",$time,pcsrc);
+
         end
     end
 
-always@(posedge iAddress, negedge iAddress)
+always@(iAddress)
     begin
         iAddressReg = iAddress;
     end
@@ -33,8 +39,16 @@ PC pc_mod(addressToInstructionMemory, iAddressReg, EXMEMPC_output, pcsrc, clk);
 assign iAddress = addressToInstructionMemory + 4;
 InstructionMemory instMemory(instMemoryInstructionOut,addressToInstructionMemory);
 IF_ID ifid(ifidInstructionOut,pcOut,instMemoryInstructionOut,iAddress,clk);
-registersModule regModule(clk,ifidInstructionOut[25:21],ifidInstructionOut[20:16],MEMWBwriteRegister_output
-    ,write_data,MEMWBRegWrite,read_data_1,read_data_2);
+registersModule regModule(
+    clk,
+    ifidInstructionOut[25:21],
+    ifidInstructionOut[20:16],
+    MEMWBwriteRegister_output,
+    write_data,
+    MEMWBRegWrite,
+    read_data_1,
+    read_data_2
+);
 SignExtened signExtend(extendedInstruction,ifidInstructionOut[15:0]);
 Control controlUnit(RegDst, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite,ifidInstructionOut[31:26]);
 
@@ -95,7 +109,6 @@ initial pcsrc = 0;
 
 always@(EXMEMM_output, EXMEMzero_output)
     begin
-        $display("EXMEMM_output, EXMEMzero_output: %b", {EXMEMM_output[2], EXMEMzero_output});
         pcsrc = EXMEMM_output[2] & EXMEMzero_output;
     end
 
@@ -105,12 +118,12 @@ MEM_WB memwb(MEMWBWB_output,MEMWBreadData_output,MEMWBALUResult_output,MEMWBwrit
 assign MEMWBRegWrite = MEMWBWB_output[1];
 assign MEMWBMemToReg = MEMWBWB_output[0];
 
-assign write_data = MEMWBMemToReg == 0 ? MEMWBreadData_output : EXMEMALUresult_output;
+assign write_data = MEMWBMemToReg == 0 ? MEMWBreadData_output : MEMWBALUResult_output;
 
 always@(posedge clk)
 begin
-    $display("%t clk is %d",$time, clk);
-
+    // $display("%t clk is %d",$time, clk);
+    // $display("OUR DATA33333: %b", {MEMWBMemToReg, MEMWBreadData_output, EXMEMALUresult_output});
 end
 
 endmodule

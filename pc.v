@@ -6,9 +6,7 @@ module PC(addressToInstructionMemory,incrementAddress,branchAddress,PCSrc,clock)
     output reg [31:0] addressToInstructionMemory;
     always @(posedge clock)
         begin
-            $display("incrementAddress: %b", incrementAddress);
-            $display("PCSrc: %b", PCSrc);
             addressToInstructionMemory = (PCSrc == 1) ? branchAddress: incrementAddress;
-            $display("addressToInstructionMemory: %b", addressToInstructionMemory);
+            $display("%t PC: %b", $time,addressToInstructionMemory);
         end
 endmodule

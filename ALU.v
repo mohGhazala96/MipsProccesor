@@ -8,16 +8,19 @@ module ALU(result, zero, in1, in2, shamt, op);
     output reg[31:0] result;
 
     always@(in1, in2, op)
+        begin
         case(op)
-            4'b0000: result = in1 & in2;
-            4'b0001: result = in1 | in2;
-            4'b0010: result = in1 + in2;
-            4'b0110: result = in1 - in2;
-            4'b0111: result = in1 < in2 ? 1 : 0;
-            4'b1000: result = in1 << shamt;
-            4'b1001: result = in1 >> shamt;
-            default: result = 0;
+            4'b0000: result <= in1 & in2;
+            4'b0001: result <= in1 | in2;
+            4'b0010: result <= in1 + in2;
+            4'b0110: result <= in1 - in2;
+            4'b0111: result <= in1 < in2 ? 1 : 0;
+            4'b1000: result <= in1 << shamt;
+            4'b1001: result <= in1 >> shamt;
+            default: result <= 0;
         endcase
+        end
+
 
     always@(result)
         zero = result == 0 ? 1 : 0;
@@ -47,30 +50,30 @@ module ALUControl(out, func, op);
         endcase
 endmodule
 
-module TestALU;
-    reg[5:0] func;
-    reg[3:0] op;
-    reg[4:0] shamt;
-    reg[31:0] in1;
-    reg[31:0] in2;
+// module TestALU;
+//     reg[5:0] func;
+//     reg[3:0] op;
+//     reg[4:0] shamt;
+//     reg[31:0] in1;
+//     reg[31:0] in2;
 
-    wire[31:0] res;
-    wire zero;
+//     wire[31:0] res;
+//     wire zero;
 
-    ALU alucontrol(res, zero, in1, in2, shamt, op);
+//     ALU alucontrol(res, zero, in1, in2, shamt, op);
 
-    initial begin
-        op = 4'b1000;
-        func = 6'b000000;
-        in1 = 2'b11;
-        in2 = 2'b11;
-        shamt = 5'b00001;
-    end
+//     initial begin
+//         op = 4'b1000;
+//         func = 6'b000000;
+//         in1 = 2'b11;
+//         in2 = 2'b11;
+//         shamt = 5'b00001;
+//     end
 
-    always@(res) begin
-        $display("%d", res);
-    end
+//     always@(res) begin
+//         $display("%d", res);
+//     end
 
-    always@(zero)
-        $display("Zero: %d", zero);
-endmodule
+//     always@(zero)
+//         $display("Zero: %d", zero);
+// endmodule

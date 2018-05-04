@@ -28,6 +28,14 @@ begin
        memoryCell[address+1] = writeData[23:16];
        memoryCell [address+2] = writeData[15:8];
        memoryCell [address+3] = writeData [7:0];
+ 
+  // $display("-----DM Address, add: %b", address);
+  // $display("-----DM Memory, mem: %b", memoryCell[address]);
+  // $display("-----DM Memory, mem: %b", memoryCell[address+1]);
+  // $display("-----DM Memory, mem: %b", memoryCell[address+2]);
+  // $display("-----DM Memory, mem: %b", memoryCell[address+3]);
+  // $display("-----DM 0 position: %b", {memoryCell[3], memoryCell[2], memoryCell[1], memoryCell[0]});
+  // $display("-----DM Write Data, mem: %b", writeData);
   end
 end
 endmodule

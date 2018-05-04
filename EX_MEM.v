@@ -40,9 +40,15 @@ writeData_output <= writeData;
 PC_output <= PC;
 zero_output <=zero;
 writeRegister_output <= writeRegister;
+
+$display("%t EX/MEM: %b", $time, {WB_output,M_output,PC_output,zero_output,ALUresult_output,
+        writeData_output,writeRegister_output});
+
 end
 
-always@(posedge M) M_output <= M;
+always@(M) begin
+    M_output <= M;
+end
 
 endmodule
 

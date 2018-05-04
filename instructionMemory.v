@@ -7,23 +7,77 @@ reg[7:0] instructionMemory[511:0];
 initial
 	begin
 		//Arithmetic:
-		//addi $t0,$t0,8 
+		//addi $t0,$t0,8 //Check
 		instructionMemory[0] = 8'b001000_01; 
 		instructionMemory[1] = 8'b000_01000;     
 		instructionMemory[2] = 8'b00000000;
 		instructionMemory[3] = 8'b00001000;
 
-		//sw $t0, 0($0) 
-		instructionMemory[4] = 8'b101011_00;  
+		//addi $t0,$t0,8 //Check
+		instructionMemory[4] = 8'b001000_01; 
 		instructionMemory[5] = 8'b000_01000;     
 		instructionMemory[6] = 8'b00000000;
-		instructionMemory[7] = 8'b00000000;
+		instructionMemory[7] = 8'b00001000;
 
-	// 	// addi 
-	// 	instructionMemory[8] = 8'b00000000;  
-	// 	instructionMemory[9] = 8'b00000000;     
-	// 	instructionMemory[10] = 8'b00000000;
-	// 	instructionMemory[11] = 8'b00000000;
+		//addi $t0,$t0,8 //Check
+		instructionMemory[8] = 8'b001000_01; 
+		instructionMemory[9] = 8'b000_01000;     
+		instructionMemory[10] = 8'b00000000;
+		instructionMemory[11] = 8'b00001000;
+
+		//addi $t0,$t0,8 //Check
+		instructionMemory[12] = 8'b001000_01; 
+		instructionMemory[13] = 8'b000_01000;     
+		instructionMemory[14] = 8'b00000000;
+		instructionMemory[15] = 8'b00001000;
+
+		//addi $t0,$t0,8 //Check
+		instructionMemory[16] = 8'b001000_01; 
+		instructionMemory[17] = 8'b000_01000;     
+		instructionMemory[18] = 8'b00000000;
+		instructionMemory[19] = 8'b00001000;
+
+		//sw $t0, 0($0) 
+		instructionMemory[20] = 8'b101011_00;  
+		instructionMemory[21] = 8'b000_01000;     
+		instructionMemory[22] = 8'b00000000;
+		instructionMemory[23] = 8'b00000000;
+		
+		//addi $t0,$t0,8 //Check
+		instructionMemory[24] = 8'b001000_01; 
+		instructionMemory[25] = 8'b000_01000;     
+		instructionMemory[26] = 8'b00000000;
+		instructionMemory[27] = 8'b00001000;
+
+		//addi $t0,$t0,8 //Check
+		instructionMemory[28] = 8'b001000_01; 
+		instructionMemory[29] = 8'b000_01000;     
+		instructionMemory[30] = 8'b00000000;
+		instructionMemory[31] = 8'b00001000;
+
+		//addi $t0,$t0,8 //Check
+		instructionMemory[32] = 8'b001000_01; 
+		instructionMemory[33] = 8'b000_01000;     
+		instructionMemory[34] = 8'b00000000;
+		instructionMemory[35] = 8'b00001000;
+
+		//addi $t0,$t0,8 //Check
+		instructionMemory[36] = 8'b001000_01; 
+		instructionMemory[37] = 8'b000_01000;     
+		instructionMemory[38] = 8'b00000000;
+		instructionMemory[39] = 8'b00001000;
+
+		//addi $t0,$t0,8 //Check
+		instructionMemory[40] = 8'b001000_01; 
+		instructionMemory[41] = 8'b000_01000;     
+		instructionMemory[42] = 8'b00000000;
+		instructionMemory[43] = 8'b00001000;
+
+		// lw $t1, 0($t0) 
+		instructionMemory[44] = 8'b100011_01;  
+		instructionMemory[45] = 8'b000_01001;     
+		instructionMemory[46] = 8'b00000000;
+		instructionMemory[47] = 8'b00000000;
 	// //_____________________________________________________
 	// 	//Load/Store:
 
@@ -115,7 +169,7 @@ initial
 
 always@(instructionAddress)
 	begin
-		$display("instructionAddress: %b", instructionAddress);
+		// $display("instructionAddress: %b", instructionAddress);
 		instructionOut = {instructionMemory[instructionAddress],
 						instructionMemory[instructionAddress + 1],
 						instructionMemory[instructionAddress + 2], 
