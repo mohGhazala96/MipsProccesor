@@ -7,8 +7,8 @@ module ID_EX(
     register1In,
     register2In,
     offestIn,
-    registerTargetIn,
     registerDestinationIn,
+    registerTargetIn,
     writeBackOut,
     memoryInoryOut,
     ALUop,
@@ -53,6 +53,10 @@ always@(posedge clock)
         offestOut <= offestIn;
         registerTargetOut<= registerTargetIn;
         registerDestinationOut<= registerDestinationIn;
+
+        $display("%t ID/EX: %b", $time, {writeBackOut,memoryInoryOut,RegDst,ALUop,ALUSrc,pcOut,
+            register1Out,register2Out,offestOut,registerTargetOut,registerDestinationOut});
+
     end
 
 endmodule

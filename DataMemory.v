@@ -7,6 +7,7 @@ input clk;
 reg [7:0] memoryCell [1000:0];
 
 output reg [31:0] readData;
+integer j;
 
 // always @(*)
 // begin
@@ -28,7 +29,22 @@ begin
        memoryCell[address+1] = writeData[23:16];
        memoryCell [address+2] = writeData[15:8];
        memoryCell [address+3] = writeData [7:0];
+ 
+
+
+  // $display("-----DM Address, add: %b", address);
+  // $display("-----DM Memory, mem: %b", memoryCell[address]);
+  // $display("-----DM Memory, mem: %b", memoryCell[address+1]);
+  // $display("-----DM Memory, mem: %b", memoryCell[address+2]);
+  // $display("-----DM Memory, mem: %b", memoryCell[address+3]);
+  // $display("-----DM 0 position: %b", {memoryCell[3], memoryCell[2], memoryCell[1], memoryCell[0]});
+  // $display("-----DM Write Data, mem: %b", writeData);
   end
+    $display("\t-------------Memory First 128 words (32):---------");
+    for (j=0;j<32;j++)begin
+    $display("%t Memory[%0d] : %b",$time, j*4,{memoryCell[j*4], memoryCell[j*4+1], memoryCell[j*4+2], memoryCell[j*4+3]});
+    end
+    $display("\t------------End Memory----------------------------");
 end
 endmodule
 

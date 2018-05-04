@@ -99,7 +99,7 @@ initial
 
 always@(instructionAddress)
 	begin
-		$display("instructionAddress: %b", instructionAddress);
+		// $display("instructionAddress: %b", instructionAddress);
 		instructionOut = {instructionMemory[instructionAddress],
 						instructionMemory[instructionAddress + 1],
 						instructionMemory[instructionAddress + 2],

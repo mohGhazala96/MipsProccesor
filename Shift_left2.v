@@ -20,7 +20,7 @@ module Shift_test;
 
     always @(out)
     begin
-       $display("%d", out);
+      //  $display("%d", out);
     end
 
 endmodule

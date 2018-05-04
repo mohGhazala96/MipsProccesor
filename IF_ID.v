@@ -12,6 +12,8 @@ module IF_ID(InstructionOut,PCOut,InstructionIn,PCIn,clock);
       begin
         PCOut = pcOutIncremented;
         InstructionOut = InstructionIn;
+        $display("%t IF/ID: %b", $time, {PCOut,InstructionOut});
+
       end
 endmodule
 
@@ -45,7 +47,7 @@ endmodule
 module finish_module;
     initial
     begin
-        #200 $finish;
+        #400 $finish;
     end
 
 endmodule
