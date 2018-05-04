@@ -29,7 +29,7 @@ begin
        memoryCell[address+1] = writeData[23:16];
        memoryCell [address+2] = writeData[15:8];
        memoryCell [address+3] = writeData [7:0];
- 
+
 
 
   // $display("-----DM Address, add: %b", address);
@@ -41,7 +41,7 @@ begin
   // $display("-----DM Write Data, mem: %b", writeData);
   end
     $display("\t-------------Memory First 128 words (32):---------");
-    for (j=0;j<32;j++)begin
+    for (j=0;j<32;j = j + 1) begin
     $display("%t Memory[%0d] : %b",$time, j*4,{memoryCell[j*4], memoryCell[j*4+1], memoryCell[j*4+2], memoryCell[j*4+3]});
     end
     $display("\t------------End Memory----------------------------");
